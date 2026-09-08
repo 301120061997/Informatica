@@ -15,26 +15,90 @@
         <li>Anillos</li>
         <li>Aretes</li>
         <li>Collares</li>
-
+    </ul>
 <form>
   <label>Nombre</label>
   <input type="text">
   <label>Telefono</label>
   <input type="tel">
-  <p> </n></p>
   <label>Notas</label>
   <textarea></textarea>
   <button>Guardar cliente</button>
   </form>
+  <p>
 
-<h1>Cliente</h1> 
-<h1>Producto</h1>
-<h1>Estado</h1>
+  </p>
+<table>
+    <tr>
+        <th>Cliente</th>
+        <th>Producto</th>
+        <th>Estado</th>
+    </tr>
 
-<table> </table>
+    <tr>
+        <td>Isha</td>
+        <td>Aretes</td>
+        <td>Pendiente</td>
+    </tr>
 
+    <tr>
+        <td>Gus</td>
+        <td>Anillos</td>
+        <td>En proceso</td>
+    </tr>
 
+    <tr>
+        <td>Fer</td>
+        <td>Collares</td>
+        <td>Entregado</td>
+    </tr>
+</table>
 
+<div id="resultado"></div>
+<script>
+const clientes = [
+  { nombre: "Ana López", telefono: "5512345678" },
+  { nombre: "Luis Pérez", telefono: "5587654321" }
+];
 
+let html = "";
+
+clientes.forEach(function(c) {
+  html += c.nombre + " - " + c.telefono + "<br>";
+});
+
+document.getElementById("resultado").innerHTML = html;
+</script>
+
+<div id="resultado-pendientes"></div>
+
+<script>
+const pedidos = [
+  { cliente: "Ana López", estado: "Pendiente" },
+  { cliente: "Luis Pérez", estado: "Entregado" },
+  { cliente: "Karla Ruiz", estado: "Pendiente" }
+];
+
+const pendientes = pedidos.filter(function(p) {
+  return p.estado === "Pendiente";
+});
+
+let htmlPendientes = "";
+
+pendientes.forEach(function(p) {
+  htmlPendientes += p.cliente + " - " + p.estado + "<br>";
+});
+
+document.getElementById("resultado-pendientes").innerHTML = htmlPendientes;
+</script>
+<button onclick="marcarEntregado()">Marcar como entregado</button>
+
+<p id="mensaje">Estado: Pendiente</p>
+
+<script>
+function marcarEntregado() {
+  document.getElementById("mensaje").innerText = "Estado: Entregado";
+}
+</script>
 </body>
 </html>
